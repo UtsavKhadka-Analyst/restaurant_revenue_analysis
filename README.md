@@ -1,74 +1,61 @@
-# Restaurant Revenue Analysis
+# Restaurant Revenue Analysis Using GAM and Lasso Regression
 
-This project focuses on analyzing restaurant revenue data to identify key factors influencing revenue and to predict future revenue based on features such as restaurant ratings, cuisine type, and other factors. The analysis leverages **Generalized Additive Models (GAM)** for capturing non-linear relationships and **Lasso Regression** for feature selection and predictive modeling.
+## Project Overview
+This project analyzes restaurant revenue data to predict restaurant revenue based on various features such as rating, location, and menu characteristics. The analysis leverages two machine learning models: **Generalized Additive Models (GAM)** and **Lasso Regression** to capture complex relationships between features and predict the target variable, which is the restaurant's revenue.
 
 ## Table of Contents
-1. [Project Description](#project-description)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Data](#data)
-5. [Analysis](#analysis)
-6. [Results](#results)
-7. [Contributing](#contributing)
-8. [License](#license)
+1. [Project Overview](#project-overview)
+2. [Data](#data)
+3. [Analysis](#analysis)
+   - [Generalized Additive Models (GAM)](#generalized-additive-models-gam)
+   - [Lasso Regression](#lasso-regression)
+4. [Visualizations](#visualizations)
+5. [Requirements](#requirements)
+6. [Usage](#usage)
+7. [License](#license)
 
-## Project Description
+## Data
+The dataset used in this analysis contains information about restaurant ratings, revenue, location, menu types, and more. The data is stored in an Excel file and contains multiple columns, including:
+- `Rating`: The restaurant's average rating.
+- `Revenue`: The revenue of the restaurant.
+- `Location`: The location of the restaurant.
+- `Menu_Type`: Type of menu offered (e.g., vegan, non-vegan).
+- Other features related to the restaurant's characteristics.
 
-The objective of this analysis is to explore the relationship between various restaurant features and their revenue. The project performs a deep dive into the data, visualizing trends and building predictive models using **Lasso Regression** and **Generalized Additive Models (GAM)**. The insights from these models aim to help restaurant managers and analysts understand the factors influencing revenue.
+## Analysis
+The analysis involves using two different models to understand and predict the restaurant revenue:
 
-## Installation
+### Generalized Additive Models (GAM)
+GAMs were used to model non-linear relationships between the features and the target variable, i.e., revenue. The model was able to account for more complex relationships than traditional linear models.
 
-Clone the repository to your local machine or access it via Google Colab for easy execution.
+**Key steps:**
+1. Preprocessing of data (feature scaling, encoding categorical variables).
+2. Building the GAM model and fitting it to the data.
+3. Analyzing the partial dependence plots for feature importance.
 
-### Clone the Repository
+### Lasso Regression
+Lasso Regression was applied to identify the most important features influencing restaurant revenue and perform feature selection. Lasso regression helps shrink the less important feature coefficients to zero, ensuring a simpler and more interpretable model.
 
-To clone the repository, run the following command:
+## Visualizations
+Below are some of the key visualizations generated during the analysis:
+
+- **Partial Dependence Plot for Rating**: Shows how the restaurant rating impacts the predicted revenue.
+- **Correlation Matrix**: Visualizes the correlation between different features in the dataset.
+- **Model Performance**: Plots the performance metrics (e.g., R-squared, Mean Squared Error) of the models.
+
+## Requirements
+To run the analysis locally, ensure that you have the following Python libraries installed:
+
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `seaborn`
+- `sklearn`
+- `pygam` (for GAM)
+- `statsmodels`
+- `openpyxl` (for reading Excel files)
+
+Install the required libraries using:
 
 ```bash
-git clone https://github.com/UtsavKhadka-Analyst/restaurant-revenue-analysis.git
-
-
-Usage
-
-To run the analysis, follow these steps:
-
-Clone this repository to your local machine or open it in Google Colab:
-
-git clone https://github.com/YourGitHubUsername/restaurant-revenue-analysis.git
-
-Open the Jupyter Notebook or Google Colab notebook (Utsav_Khadka_FE.ipynb) to view the code and analysis.
-Ensure you have the necessary dataset (restaurant_revenue_MT.xlsx) available in your working directory.
-Run the cells in the notebook for data preprocessing, feature engineering, and model training.
-
-Data
-
-The dataset restaurant_revenue_MT.xlsx includes the following columns:
-
-Rating                   0
-Seating Capacity         0
-Average Meal Price       0
-Ambience Score           0
-Service Quality Score    0
-Weekend Reservations     0
-Weekday Reservations     0
-Revenue_Cat
-
-Analysis Details
-
-1. Lasso Regression
-Lasso regression is used to regularize the linear regression model and helps with feature selection. It penalizes the coefficients of less important features, effectively shrinking them to zero.
-
-from sklearn.linear_model import Lasso
-lasso = Lasso(alpha=0.1)
-lasso.fit(X_train, y_train)
-This part of the analysis focuses on how restaurant features affect revenue by selecting the most influential features using Lasso.
-
-2. Generalized Additive Models (GAM)
-GAM is used to model the non-linear relationships between the features and the target variable (revenue). In this analysis, we apply GAM to understand how features like Rating and Review Count non-linearly influence revenue.
-
-from pygam import LinearGAM, s
-gam = LinearGAM(s(0) + s(1)).fit(X_train, y_train)
-This model allows us to visualize and interpret the influence of the individual features on restaurant revenue.
-
-
-
+pip install pandas numpy matplotlib seaborn sklearn pygam statsmodels openpyxl
