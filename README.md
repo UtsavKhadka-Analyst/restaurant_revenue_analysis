@@ -28,8 +28,47 @@ To clone the repository, run the following command:
 git clone https://github.com/UtsavKhadka-Analyst/restaurant-revenue-analysis.git
 
 
+Usage
 
-## Usage
+To run the analysis, follow these steps:
 
-Running the Analysis
-The primary analysis is contained in the Utsav_Khadka_FE.ipynb notebook. You can open the notebook either locally or in Google Colab to run the analysis. This notebook will guide you through loading the data, performing exploratory data analysis (EDA), feature engineering, and building models for predicting restaurant revenue.
+Clone this repository to your local machine or open it in Google Colab:
+
+git clone https://github.com/YourGitHubUsername/restaurant-revenue-analysis.git
+
+Open the Jupyter Notebook or Google Colab notebook (Utsav_Khadka_FE.ipynb) to view the code and analysis.
+Ensure you have the necessary dataset (restaurant_revenue_MT.xlsx) available in your working directory.
+Run the cells in the notebook for data preprocessing, feature engineering, and model training.
+
+Data
+
+The dataset restaurant_revenue_MT.xlsx includes the following columns:
+
+Rating                   0
+Seating Capacity         0
+Average Meal Price       0
+Ambience Score           0
+Service Quality Score    0
+Weekend Reservations     0
+Weekday Reservations     0
+Revenue_Cat
+
+Analysis Details
+
+1. Lasso Regression
+Lasso regression is used to regularize the linear regression model and helps with feature selection. It penalizes the coefficients of less important features, effectively shrinking them to zero.
+
+from sklearn.linear_model import Lasso
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_train, y_train)
+This part of the analysis focuses on how restaurant features affect revenue by selecting the most influential features using Lasso.
+
+2. Generalized Additive Models (GAM)
+GAM is used to model the non-linear relationships between the features and the target variable (revenue). In this analysis, we apply GAM to understand how features like Rating and Review Count non-linearly influence revenue.
+
+from pygam import LinearGAM, s
+gam = LinearGAM(s(0) + s(1)).fit(X_train, y_train)
+This model allows us to visualize and interpret the influence of the individual features on restaurant revenue.
+
+
+
