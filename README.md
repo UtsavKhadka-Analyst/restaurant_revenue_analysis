@@ -26,3 +26,10 @@ To clone the repository, run the following command:
 
 ```bash
 git clone https://github.com/UtsavKhadka-Analyst/restaurant-revenue-analysis.git
+
+
+
+## Usage
+
+Running the Analysis
+The primary analysis is contained in the Utsav_Khadka_FE.ipynb notebook. You can open the notebook either locally or in Google Colab to run the analysis. This notebook will guide you through loading the data, performing exploratory data analysis (EDA), feature engineering, and building models for predicting restaurant revenue.
